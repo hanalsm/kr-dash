@@ -99,6 +99,9 @@ td.am{color:var(--am)}
 .ch.lg{height:290px}
 .ch.sm{height:200px}
 .ch canvas{display:block;width:100%!important;height:100%!important}
+/* g2 셀에서 차트가 옆 카드(예: FWD 매트릭스) 높이에 맞춰 늘어나도록 */
+.cd.cdfill{display:flex;flex-direction:column}
+.cd.cdfill .ch{flex:1 1 auto;height:auto;min-height:250px}
 /* ── 배지 ── */
 .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.3px}
 .badge-gn{background:rgba(16,185,129,.15);color:#10b981}
@@ -329,7 +332,7 @@ td.am{color:var(--am)}
     </div>
   </div>
   <div class="g2">
-    <div class="cd">
+    <div class="cd cdfill">
       <div class="ct2">CD91D / KOFR / 기준금리 추이</div>
       <div class="ch"><canvas id="cCdKofr"></canvas></div>
     </div>
@@ -560,15 +563,10 @@ td.am{color:var(--am)}
   </div>
   <div class="g2">
     <div class="cd">
-      <div class="ct2">한국은행 기준금리 결정 이력 <span class="badge badge-gn">직전 1년</span></div>
+      <div class="ct2">한국은행 기준금리 결정 이력 <span class="badge badge-gn">'25.1~</span></div>
       <div class="tw"><table>
         <thead><tr><th style="text-align:center">일자</th><th class="nm">기준금리</th><th style="text-align:center">결정</th><th style="text-align:center">비고</th></tr></thead>
         <tbody><tr>
-          <td class="tc" style="text-align:center">26.05.28</td>
-          <td class="nm sp">2.50%</td>
-          <td style="color:var(--tx2);font-weight:600;text-align:center">동결</td>
-          <td class="tc" style="color:var(--tx3);text-align:center"></td>
-        </tr><tr>
           <td class="tc" style="text-align:center">26.04.10</td>
           <td class="nm sp">2.50%</td>
           <td style="color:var(--tx2);font-weight:600;text-align:center">동결</td>
@@ -608,11 +606,26 @@ td.am{color:var(--am)}
           <td class="nm sp">2.50%</td>
           <td style="color:var(--gn);font-weight:600;text-align:center">인하</td>
           <td class="tc" style="color:var(--tx3);text-align:center">25bp 인하</td>
+        </tr><tr>
+          <td class="tc" style="text-align:center">25.04.17</td>
+          <td class="nm sp">2.75%</td>
+          <td style="color:var(--tx2);font-weight:600;text-align:center">동결</td>
+          <td class="tc" style="color:var(--tx3);text-align:center"></td>
+        </tr><tr>
+          <td class="tc" style="text-align:center">25.02.25</td>
+          <td class="nm sp">2.75%</td>
+          <td style="color:var(--gn);font-weight:600;text-align:center">인하</td>
+          <td class="tc" style="color:var(--tx3);text-align:center">25bp 인하</td>
+        </tr><tr>
+          <td class="tc" style="text-align:center">25.01.16</td>
+          <td class="nm sp">3.00%</td>
+          <td style="color:var(--tx2);font-weight:600;text-align:center">동결</td>
+          <td class="tc" style="color:var(--tx3);text-align:center"></td>
         </tr></tbody>
       </table></div>
     </div>
     <div class="cd">
-      <div class="ct2">Fed 기준금리 결정 이력 <span class="badge badge-gn">직전 1년</span></div>
+      <div class="ct2">Fed 기준금리 결정 이력 <span class="badge badge-gn">'25.1~</span></div>
       <div class="tw"><table>
         <thead><tr><th style="text-align:center">일자</th><th class="nm">기준금리(상단)</th><th style="text-align:center">결정</th><th style="text-align:center">비고</th></tr></thead>
         <tbody><tr>
@@ -652,6 +665,21 @@ td.am{color:var(--am)}
           <td class="tc" style="color:var(--tx3);text-align:center"></td>
         </tr><tr>
           <td class="tc" style="text-align:center">25.06.18</td>
+          <td class="nm sp">4.50%</td>
+          <td style="color:var(--tx2);font-weight:600;text-align:center">동결</td>
+          <td class="tc" style="color:var(--tx3);text-align:center"></td>
+        </tr><tr>
+          <td class="tc" style="text-align:center">25.05.07</td>
+          <td class="nm sp">4.50%</td>
+          <td style="color:var(--tx2);font-weight:600;text-align:center">동결</td>
+          <td class="tc" style="color:var(--tx3);text-align:center"></td>
+        </tr><tr>
+          <td class="tc" style="text-align:center">25.03.19</td>
+          <td class="nm sp">4.50%</td>
+          <td style="color:var(--tx2);font-weight:600;text-align:center">동결</td>
+          <td class="tc" style="color:var(--tx3);text-align:center"></td>
+        </tr><tr>
+          <td class="tc" style="text-align:center">25.01.29</td>
           <td class="nm sp">4.50%</td>
           <td style="color:var(--tx2);font-weight:600;text-align:center">동결</td>
           <td class="tc" style="color:var(--tx3);text-align:center"></td>
