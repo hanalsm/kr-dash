@@ -164,6 +164,17 @@ td.am{color:var(--am)}
 .cal-tooltip .tt-lbl{color:var(--tx3);font-size:11px}
 .cal-tooltip .tt-val{font-family:var(--mn);color:var(--tx);font-size:11.5px}
 .cal-tooltip .tt-rate{color:#86efac;font-weight:700}
+/* ── 모바일 바텀시트 (긴 입찰정보 스크롤 개선) ── */
+.cal-sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9998;display:none}
+.cal-sheet-bg.show{display:block}
+.cal-tooltip.sheet{position:fixed;left:0!important;right:0;top:auto!important;bottom:0;width:100%;max-width:100%;min-width:0;max-height:78vh;flex-direction:column;padding:0;border-radius:16px 16px 0 0;box-shadow:0 -8px 32px rgba(0,0,0,.6);pointer-events:auto;overflow:hidden;animation:sheetUp .22s ease}
+@keyframes sheetUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.cal-tooltip .tt-sheet-head{position:relative;display:flex;align-items:center;justify-content:center;padding:15px 46px 12px;border-bottom:1px solid var(--bd);flex:0 0 auto}
+.cal-tooltip .tt-grab{position:absolute;top:7px;left:50%;transform:translateX(-50%);width:38px;height:4px;border-radius:3px;background:var(--bd)}
+.cal-tooltip .tt-sheet-title{font-weight:700;font-size:14px;color:var(--tx)}
+.cal-tooltip .tt-sheet-x{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:none;border-radius:8px;background:var(--bg2);color:var(--tx2);font-size:15px;cursor:pointer;line-height:1}
+.cal-tooltip .tt-sheet-body{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 18px calc(18px + env(safe-area-inset-bottom));flex:1 1 auto}
+.cal-tooltip.sheet .tt-done + .tt-done,.cal-tooltip.sheet .tt-sched + .tt-sched,.cal-tooltip.sheet .tt-done + .tt-sched,.cal-tooltip.sheet .tt-sched + .tt-done{margin-top:14px;padding-top:14px;border-top:1px solid var(--bd)}
 /* ── 스크롤바 ── */
 ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--bd);border-radius:3px}
 </style>
@@ -2170,10 +2181,16 @@ function mkChart(id,type,labels,datasets,opts) {
     }
   }
 
-  // ── 커스텀 툴팁 ──
+  // ── 커스텀 툴팁(데스크탑 호버) / 바텀시트(모바일 탭) ──
   const ttEl=document.createElement('div');
   ttEl.className='cal-tooltip';
   document.body.appendChild(ttEl);
+  const ttBg=document.createElement('div');
+  ttBg.className='cal-sheet-bg';
+  document.body.appendChild(ttBg);
+  const isMobile=()=>window.matchMedia('(max-width:768px)').matches;
+  const fmtTitle=s=>{const m=s.match(/^\d{4}-(\d{2})-(\d{2})$/);return m?`${+m[1]}월 ${+m[2]}일 입찰 정보`:'입찰 정보';};
+  let ttOpen=false;
 
   function buildTT(d){
     const isDone=d.status==='완료';
@@ -2200,35 +2217,60 @@ function mkChart(id,type,labels,datasets,opts) {
     ttEl.style.left=left+'px';
     ttEl.style.top=top+'px';
   }
+  function openTT(bodyHtml,rect,title){
+    if(isMobile()){
+      const head=`<div class="tt-sheet-head"><span class="tt-grab"></span><span class="tt-sheet-title">${title||'입찰 정보'}</span><button type="button" class="tt-sheet-x" aria-label="닫기">✕</button></div>`;
+      ttEl.innerHTML=head+`<div class="tt-sheet-body">${bodyHtml}</div>`;
+      ttEl.classList.add('sheet');
+      ttBg.classList.add('show');
+      ttEl.style.left='';ttEl.style.top='';
+      ttEl.style.display='flex';
+      const body=ttEl.querySelector('.tt-sheet-body');if(body)body.scrollTop=0;
+    } else {
+      ttEl.classList.remove('sheet');
+      ttBg.classList.remove('show');
+      ttEl.innerHTML=bodyHtml;
+      ttEl.style.display='block';
+      if(rect)posTT(rect);
+    }
+    ttOpen=true;
+  }
+  function closeTT(){
+    ttEl.style.display='none';
+    ttEl.classList.remove('sheet');
+    ttBg.classList.remove('show');
+    ttOpen=false;
+  }
+  ttBg.addEventListener('click',closeTT);
+  ttEl.addEventListener('click',e=>{
+    if(e.target.closest('.tt-sheet-x')){closeTT();return;}
+    e.stopPropagation();
+  });
+
   document.querySelectorAll('.cal-event[data-type]').forEach(el=>{
     el.addEventListener('mouseenter',e=>{
-      ttEl.innerHTML=buildTT(el.dataset);
-      ttEl.style.display='block';
-      posTT(e.currentTarget.getBoundingClientRect());
+      if(isMobile())return;
+      openTT(buildTT(el.dataset),e.currentTarget.getBoundingClientRect());
     });
-    el.addEventListener('mouseleave',()=>{ttEl.style.display='none';});
+    el.addEventListener('mouseleave',()=>{if(!isMobile())closeTT();});
     el.addEventListener('click',e=>{
       e.stopPropagation();
-      if(ttEl.style.display==='block'){ttEl.style.display='none';return;}
-      ttEl.innerHTML=buildTT(el.dataset);
-      ttEl.style.display='block';
-      posTT(e.currentTarget.getBoundingClientRect());
+      if(ttOpen){closeTT();return;}
+      openTT(buildTT(el.dataset),e.currentTarget.getBoundingClientRect(),fmtTitle(el.dataset.date));
     });
   });
-  document.addEventListener('click',()=>{ttEl.style.display='none';});
+  document.addEventListener('click',closeTT);
 
-  // 모바일: 셀 클릭으로 해당 날의 입찰 정보 툴팁
+  // 모바일: 셀(날짜) 탭 → 해당 날의 입찰 정보 바텀시트
   document.querySelectorAll('.cal-cell.has-auction,.cal-cell.has-done').forEach(cell=>{
     cell.addEventListener('click',e=>{
       e.stopPropagation();
-      if(ttEl.style.display==='block'){ttEl.style.display='none';return;}
+      if(ttOpen){closeTT();return;}
       const evEls=cell.querySelectorAll('.cal-event[data-type]');
       if(!evEls.length) return;
       let html='';
       evEls.forEach(ev=>{html+=buildTT(ev.dataset);});
-      ttEl.innerHTML=html;
-      ttEl.style.display='block';
-      posTT(cell.getBoundingClientRect());
+      openTT(html,cell.getBoundingClientRect(),fmtTitle(evEls[0].dataset.date));
     });
   });
 
