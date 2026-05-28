@@ -398,6 +398,16 @@ td.am{color:var(--am)}
   </div>
   <div class="g2">
     <div class="cd">
+      <div class="ct2">CNH/KRW 환율 추이</div>
+      <div class="ch"><canvas id="cCnhKrw"></canvas></div>
+    </div>
+    <div class="cd">
+      <div class="ct2">USD/CNH 환율 추이</div>
+      <div class="ch"><canvas id="cUsdCnh"></canvas></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="cd">
       <div class="ct2">EUR/KRW 환율 추이</div>
       <div class="ch"><canvas id="cEurKrw"></canvas></div>
     </div>
@@ -723,7 +733,7 @@ td.am{color:var(--am)}
   </div>
   <div class="g2">
     <div class="cd">
-      <div class="ct2">KOSPI 시총 상위 10 <span class="badge badge-gn">기준 26.05.28</span></div>
+      <div class="ct2">KOSPI 시총 상위 10 <span class="badge badge-gn">기준 26.05.27</span></div>
       <div class="tw"><table id="kospiCapTable">
         <thead><tr>
           <th class="sc0">기업</th><th style="color:var(--tx3)">코드</th>
@@ -733,83 +743,83 @@ td.am{color:var(--am)}
         <tbody><tr>
           <td class="tc sp sc0">삼성전자</td>
           <td style="color:var(--tx3);font-size:10px">005930</td>
-          <td class="nm sp">299,500</td>
-          <td class="nm ng">-2.4%</td>
-          <td class="nm ps">+35.8%</td>
-          <td class="nm ps">+133.6%</td>
-          <td class="nm" style="color:var(--tx3)">1751조</td>
+          <td class="nm sp">307,000</td>
+          <td class="nm ps">+2.7%</td>
+          <td class="nm ps">+39.2%</td>
+          <td class="nm ps">+139.4%</td>
+          <td class="nm" style="color:var(--tx3)">1795조</td>
         </tr><tr>
           <td class="tc sp sc0">SK하이닉스</td>
           <td style="color:var(--tx3);font-size:10px">000660</td>
-          <td class="nm sp">2,289,000</td>
-          <td class="nm ps">+2.1%</td>
-          <td class="nm ps">+78.0%</td>
-          <td class="nm ps">+238.8%</td>
-          <td class="nm" style="color:var(--tx3)">1631조</td>
+          <td class="nm sp">2,242,625</td>
+          <td class="nm ps">+9.3%</td>
+          <td class="nm ps">+74.4%</td>
+          <td class="nm ps">+231.9%</td>
+          <td class="nm" style="color:var(--tx3)">1598조</td>
         </tr><tr>
           <td class="tc sp sc0">SK스퀘어</td>
           <td style="color:var(--tx3);font-size:10px">402340</td>
-          <td class="nm sp">1,237,000</td>
-          <td class="nm ng">-3.1%</td>
-          <td class="nm ps">+47.3%</td>
-          <td class="nm ps">+216.0%</td>
-          <td class="nm" style="color:var(--tx3)">163조</td>
+          <td class="nm sp">1,276,000</td>
+          <td class="nm ps">+8.0%</td>
+          <td class="nm ps">+51.9%</td>
+          <td class="nm ps">+225.9%</td>
+          <td class="nm" style="color:var(--tx3)">168조</td>
         </tr><tr>
           <td class="tc sp sc0">현대차</td>
           <td style="color:var(--tx3);font-size:10px">005380</td>
-          <td class="nm sp">677,000</td>
-          <td class="nm ng">-0.2%</td>
-          <td class="nm ps">+28.0%</td>
-          <td class="nm ps">+128.6%</td>
+          <td class="nm sp">678,500</td>
+          <td class="nm ng">-1.2%</td>
+          <td class="nm ps">+28.2%</td>
+          <td class="nm ps">+129.1%</td>
           <td class="nm" style="color:var(--tx3)">139조</td>
         </tr><tr>
           <td class="tc sp sc0">삼성전기</td>
           <td style="color:var(--tx3);font-size:10px">009150</td>
-          <td class="nm sp">1,849,000</td>
-          <td class="nm ps">+13.4%</td>
-          <td class="nm ps">+122.2%</td>
-          <td class="nm ps">+584.8%</td>
-          <td class="nm" style="color:var(--tx3)">138조</td>
+          <td class="nm sp">1,630,000</td>
+          <td class="nm ps">+3.7%</td>
+          <td class="nm ps">+95.9%</td>
+          <td class="nm ps">+503.7%</td>
+          <td class="nm" style="color:var(--tx3)">122조</td>
         </tr><tr>
           <td class="tc sp sc0">LG에너지솔루션</td>
           <td style="color:var(--tx3);font-size:10px">373220</td>
-          <td class="nm sp">442,000</td>
-          <td class="nm ps">+15.3%</td>
+          <td class="nm sp">383,500</td>
           <td class="nm ng">-4.0%</td>
-          <td class="nm ps">+22.4%</td>
-          <td class="nm" style="color:var(--tx3)">103조</td>
+          <td class="nm ng">-16.7%</td>
+          <td class="nm ps">+6.2%</td>
+          <td class="nm" style="color:var(--tx3)">90조</td>
         </tr><tr>
           <td class="tc sp sc0">HD현대중공업</td>
           <td style="color:var(--tx3);font-size:10px">329180</td>
-          <td class="nm sp">704,000</td>
-          <td class="nm ng">-5.4%</td>
-          <td class="nm ps">+2.8%</td>
-          <td class="nm ps">+40.6%</td>
-          <td class="nm" style="color:var(--tx3)">74조</td>
+          <td class="nm sp">744,000</td>
+          <td class="nm ng">-0.1%</td>
+          <td class="nm ps">+8.6%</td>
+          <td class="nm ps">+48.6%</td>
+          <td class="nm" style="color:var(--tx3)">78조</td>
         </tr><tr>
           <td class="tc sp sc0">삼성생명</td>
           <td style="color:var(--tx3);font-size:10px">032830</td>
-          <td class="nm sp">357,500</td>
-          <td class="nm ps">+0.8%</td>
-          <td class="nm ps">+43.3%</td>
-          <td class="nm ps">+128.7%</td>
-          <td class="nm" style="color:var(--tx3)">72조</td>
+          <td class="nm sp">354,500</td>
+          <td class="nm ps">+1.9%</td>
+          <td class="nm ps">+42.1%</td>
+          <td class="nm ps">+126.8%</td>
+          <td class="nm" style="color:var(--tx3)">71조</td>
         </tr><tr>
           <td class="tc sp sc0">두산에너빌리티</td>
           <td style="color:var(--tx3);font-size:10px">034020</td>
-          <td class="nm sp">105,900</td>
-          <td class="nm ng">-2.4%</td>
-          <td class="nm ng">-16.7%</td>
-          <td class="nm ps">+40.8%</td>
-          <td class="nm" style="color:var(--tx3)">68조</td>
+          <td class="nm sp">108,500</td>
+          <td class="nm ng">-3.6%</td>
+          <td class="nm ng">-14.6%</td>
+          <td class="nm ps">+44.3%</td>
+          <td class="nm" style="color:var(--tx3)">70조</td>
         </tr><tr>
           <td class="tc sp sc0">삼성물산</td>
           <td style="color:var(--tx3);font-size:10px">028260</td>
-          <td class="nm sp">399,500</td>
-          <td class="nm ng">-2.7%</td>
-          <td class="nm ps">+33.8%</td>
-          <td class="nm ps">+63.1%</td>
-          <td class="nm" style="color:var(--tx3)">65조</td>
+          <td class="nm sp">410,500</td>
+          <td class="nm ng">-0.1%</td>
+          <td class="nm ps">+37.5%</td>
+          <td class="nm ps">+67.6%</td>
+          <td class="nm" style="color:var(--tx3)">67조</td>
         </tr></tbody>
       </table></div>
     </div>
@@ -1834,14 +1844,29 @@ function mkChart(id,type,labels,datasets,opts) {
 
   const spot = fxData.find(f=>f.pair==='USD/KRW')?.rate ?? null;
 
+  // ── 이동평균선 (20/60/200일) — 시간순 배열 기준 ──
+  function movAvg(arr,n){
+    const out=new Array(arr.length).fill(null);
+    let sum=0,cnt=0; const q=[];
+    for(let i=0;i<arr.length;i++){
+      const v=arr[i]; q.push(v); if(v!=null){sum+=v;cnt++;}
+      if(q.length>n){ const o=q.shift(); if(o!=null){sum-=o;cnt--;} }
+      out[i]=(q.length===n && cnt===n)?sum/n:null;
+    }
+    return out;
+  }
+  const MA_DEF=[[20,'#94a3b8'],[60,'#3b82f6'],[200,'#ef4444']];
+  function maDatasets(arr){
+    return MA_DEF.map(([n,c])=>({label:'MA'+n,data:movAvg(arr,n),borderColor:c,borderWidth:1,pointRadius:0,fill:false,tension:0}));
+  }
+
   // ── USD/KRW 추이 (풀 너비) ──
   if(TS_FX.length>0) {
     const fxArr = getArr(TS_FX,'close');
-    const fxAvg = fxArr.filter(v=>v!=null).reduce((a,b)=>a+b,0)/(fxArr.filter(v=>v!=null).length||1);
     const fxOpts = {...baseOpts(''), scales:{...baseOpts().scales, y:{...baseOpts().scales.y, ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(0)}}}};
     mkChart('cUsdKrw','line',getLbls(TS_FX),[
       {label:'USD/KRW', data:fxArr, borderColor:CC.am, borderWidth:2, pointRadius:0,fill:false,tension:.3},
-      {label:'5년평균', data:Array(fxArr.length).fill(+fxAvg.toFixed(0)), borderColor:CC.am, borderWidth:1, pointRadius:0,fill:false,tension:0, borderDash:[5,3]},
+      ...maDatasets(fxArr),
     ], fxOpts);
   } else {
     const el=document.getElementById('cUsdKrw');
@@ -1852,56 +1877,77 @@ function mkChart(id,type,labels,datasets,opts) {
   const usdByDate={};  TS_FX.forEach(r=>{ if(r.close!=null) usdByDate[r.date]=r.close; });
   const jpyByDate={};  TS_JPYKRW.forEach(r=>{ if(r.close!=null) jpyByDate[r.date]=r.close; });
   const eurByDate={};  TS_EURKRW.forEach(r=>{ if(r.close!=null) eurByDate[r.date]=r.close; });
+  const cnhByDate={};  TS_CNHKRW.forEach(r=>{ if(r.close!=null) cnhByDate[r.date]=r.close; });
 
-  // ── JPY/KRW (100엔 기준, 5년 평균선 포함) ──
+  // ── JPY/KRW (100엔 기준) ──
   if(TS_JPYKRW.length>0) {
     const jpyData = getArr(TS_JPYKRW,'close');
-    const jpyAvg  = jpyData.filter(v=>v!=null).reduce((a,b)=>a+b,0)/(jpyData.filter(v=>v!=null).length||1);
     const jpyOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(1)}}}};
     mkChart('cJpyKrw','line',getLbls(TS_JPYKRW),[
       {label:'JPY/KRW(100엔)', data:jpyData, borderColor:CC.cy, borderWidth:2, pointRadius:0, fill:false, tension:.3},
-      {label:'5년평균', data:Array(jpyData.length).fill(+jpyAvg.toFixed(1)), borderColor:CC.cy, borderWidth:1, pointRadius:0, fill:false, tension:0, borderDash:[5,3]},
+      ...maDatasets(jpyData),
     ], jpyOpts);
   }
 
-  // ── USD/JPY (= USD/KRW × 100 ÷ JPY_100엔, 5년 평균선 포함) ──
+  // ── USD/JPY (= USD/KRW × 100 ÷ JPY_100엔) ──
   if(TS_JPYKRW.length>0 && TS_FX.length>0) {
     const jpyLbl = getLbls(TS_JPYKRW);
     const ujData = jpyLbl.map(d=>{
       const u=usdByDate[d], j=jpyByDate[d];
       return (u!=null&&j!=null&&j>0)?+(u*100/j).toFixed(2):null;
     });
-    const ujAvg = ujData.filter(v=>v!=null).reduce((a,b)=>a+b,0)/(ujData.filter(v=>v!=null).length||1);
     const ujOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(1)}}}};
     mkChart('cUsdJpy','line',jpyLbl,[
       {label:'USD/JPY', data:ujData, borderColor:CC.pk, borderWidth:2, pointRadius:0, fill:false, tension:.3},
-      {label:'5년평균', data:Array(ujData.length).fill(+ujAvg.toFixed(2)), borderColor:CC.pk, borderWidth:1, pointRadius:0, fill:false, tension:0, borderDash:[5,3]},
+      ...maDatasets(ujData),
     ], ujOpts);
   }
 
-  // ── EUR/KRW (5년 평균선 포함) ──
+  // ── CNH/KRW ──
+  if(TS_CNHKRW.length>0) {
+    const cnhData = getArr(TS_CNHKRW,'close');
+    const cnhOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(1)}}}};
+    mkChart('cCnhKrw','line',getLbls(TS_CNHKRW),[
+      {label:'CNH/KRW', data:cnhData, borderColor:CC.gn, borderWidth:2, pointRadius:0, fill:false, tension:.3},
+      ...maDatasets(cnhData),
+    ], cnhOpts);
+  }
+
+  // ── USD/CNH (= USD/KRW ÷ CNH/KRW) ──
+  if(TS_CNHKRW.length>0 && TS_FX.length>0) {
+    const cnhLbl = getLbls(TS_CNHKRW);
+    const ucData = cnhLbl.map(d=>{
+      const u=usdByDate[d], c=cnhByDate[d];
+      return (u!=null&&c!=null&&c>0)?+(u/c).toFixed(4):null;
+    });
+    const ucOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(2)}}}};
+    mkChart('cUsdCnh','line',cnhLbl,[
+      {label:'USD/CNH', data:ucData, borderColor:CC.pk, borderWidth:2, pointRadius:0, fill:false, tension:.3},
+      ...maDatasets(ucData),
+    ], ucOpts);
+  }
+
+  // ── EUR/KRW ──
   if(TS_EURKRW.length>0) {
     const eurData = getArr(TS_EURKRW,'close');
-    const eurAvg  = eurData.filter(v=>v!=null).reduce((a,b)=>a+b,0)/(eurData.filter(v=>v!=null).length||1);
     const eurOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(0)}}}};
     mkChart('cEurKrw','line',getLbls(TS_EURKRW),[
       {label:'EUR/KRW', data:eurData, borderColor:CC.pu, borderWidth:2, pointRadius:0, fill:false, tension:.3},
-      {label:'5년평균', data:Array(eurData.length).fill(+eurAvg.toFixed(0)), borderColor:CC.pu, borderWidth:1, pointRadius:0, fill:false, tension:0, borderDash:[5,3]},
+      ...maDatasets(eurData),
     ], eurOpts);
   }
 
-  // ── EUR/USD (= EUR/KRW ÷ USD/KRW, 5년 평균선 포함) ──
+  // ── EUR/USD (= EUR/KRW ÷ USD/KRW) ──
   if(TS_EURKRW.length>0 && TS_FX.length>0) {
     const eurLbl = getLbls(TS_EURKRW);
     const euData = eurLbl.map(d=>{
       const e=eurByDate[d], u=usdByDate[d];
       return (e!=null&&u!=null&&u>0)?+(e/u).toFixed(4):null;
     });
-    const euAvg = euData.filter(v=>v!=null).reduce((a,b)=>a+b,0)/(euData.filter(v=>v!=null).length||1);
     const euOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(3)}}}};
     mkChart('cEurUsd','line',eurLbl,[
       {label:'EUR/USD', data:euData, borderColor:CC.gn, borderWidth:2, pointRadius:0, fill:false, tension:.3},
-      {label:'5년평균', data:Array(euData.length).fill(+euAvg.toFixed(4)), borderColor:CC.gn, borderWidth:1, pointRadius:0, fill:false, tension:0, borderDash:[5,3]},
+      ...maDatasets(euData),
     ], euOpts);
   }
 
