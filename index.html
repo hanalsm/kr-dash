@@ -1893,7 +1893,7 @@ function mkChart(id,type,labels,datasets,opts) {
   }
   const MA_DEF=[[20,'#94a3b8'],[60,'#3b82f6'],[200,'#ef4444']];
   function maDatasets(arr){
-    return MA_DEF.map(([n,c])=>({label:'MA'+n,data:movAvg(arr,n),borderColor:c,borderWidth:1.1,pointRadius:0,fill:false,tension:0}));
+    return MA_DEF.map(([n,c])=>({label:'MA'+n,data:movAvg(arr,n),borderColor:c,borderWidth:1.4,pointRadius:0,fill:false,tension:0}));
   }
 
   // ── USD/KRW 추이 (풀 너비) ──
