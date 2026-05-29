@@ -1893,7 +1893,7 @@ function mkChart(id,type,labels,datasets,opts) {
   }
   const MA_DEF=[[20,'#94a3b8'],[60,'#3b82f6'],[200,'#ef4444']];
   function maDatasets(arr){
-    return MA_DEF.map(([n,c])=>({label:'MA'+n,data:movAvg(arr,n),borderColor:c,borderWidth:1,pointRadius:0,fill:false,tension:0}));
+    return MA_DEF.map(([n,c])=>({label:'MA'+n,data:movAvg(arr,n),borderColor:c,borderWidth:1.1,pointRadius:0,fill:false,tension:0}));
   }
 
   // ── USD/KRW 추이 (풀 너비) ──
@@ -1901,7 +1901,7 @@ function mkChart(id,type,labels,datasets,opts) {
     const fxArr = getArr(TS_FX,'close');
     const fxOpts = {...baseOpts(''), scales:{...baseOpts().scales, y:{...baseOpts().scales.y, ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(0)}}}};
     mkChart('cUsdKrw','line',getLbls(TS_FX),[
-      {label:'USD/KRW', data:fxArr, borderColor:CC.am, borderWidth:1.4, pointRadius:0,fill:false,tension:.3},
+      {label:'USD/KRW', data:fxArr, borderColor:CC.am, borderWidth:1.0, pointRadius:0,fill:false,tension:.3},
       ...maDatasets(fxArr),
     ], fxOpts);
   } else {
@@ -1920,7 +1920,7 @@ function mkChart(id,type,labels,datasets,opts) {
     const jpyData = getArr(TS_JPYKRW,'close');
     const jpyOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(1)}}}};
     mkChart('cJpyKrw','line',getLbls(TS_JPYKRW),[
-      {label:'JPY/KRW(100엔)', data:jpyData, borderColor:CC.cy, borderWidth:1.4, pointRadius:0, fill:false, tension:.3},
+      {label:'JPY/KRW(100엔)', data:jpyData, borderColor:CC.cy, borderWidth:1.0, pointRadius:0, fill:false, tension:.3},
       ...maDatasets(jpyData),
     ], jpyOpts);
   }
@@ -1934,7 +1934,7 @@ function mkChart(id,type,labels,datasets,opts) {
     });
     const ujOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(1)}}}};
     mkChart('cUsdJpy','line',jpyLbl,[
-      {label:'USD/JPY', data:ujData, borderColor:CC.pk, borderWidth:1.4, pointRadius:0, fill:false, tension:.3},
+      {label:'USD/JPY', data:ujData, borderColor:CC.pk, borderWidth:1.0, pointRadius:0, fill:false, tension:.3},
       ...maDatasets(ujData),
     ], ujOpts);
   }
@@ -1944,7 +1944,7 @@ function mkChart(id,type,labels,datasets,opts) {
     const cnhData = getArr(TS_CNHKRW,'close');
     const cnhOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(1)}}}};
     mkChart('cCnhKrw','line',getLbls(TS_CNHKRW),[
-      {label:'CNH/KRW', data:cnhData, borderColor:CC.gn, borderWidth:1.4, pointRadius:0, fill:false, tension:.3},
+      {label:'CNH/KRW', data:cnhData, borderColor:CC.gn, borderWidth:1.0, pointRadius:0, fill:false, tension:.3},
       ...maDatasets(cnhData),
     ], cnhOpts);
   }
@@ -1958,7 +1958,7 @@ function mkChart(id,type,labels,datasets,opts) {
     });
     const ucOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(2)}}}};
     mkChart('cUsdCnh','line',cnhLbl,[
-      {label:'USD/CNH', data:ucData, borderColor:CC.lm, borderWidth:1.4, pointRadius:0, fill:false, tension:.3},
+      {label:'USD/CNH', data:ucData, borderColor:CC.lm, borderWidth:1.0, pointRadius:0, fill:false, tension:.3},
       ...maDatasets(ucData),
     ], ucOpts);
   }
@@ -1968,7 +1968,7 @@ function mkChart(id,type,labels,datasets,opts) {
     const eurData = getArr(TS_EURKRW,'close');
     const eurOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(0)}}}};
     mkChart('cEurKrw','line',getLbls(TS_EURKRW),[
-      {label:'EUR/KRW', data:eurData, borderColor:CC.pu, borderWidth:1.4, pointRadius:0, fill:false, tension:.3},
+      {label:'EUR/KRW', data:eurData, borderColor:CC.pu, borderWidth:1.0, pointRadius:0, fill:false, tension:.3},
       ...maDatasets(eurData),
     ], eurOpts);
   }
@@ -1982,7 +1982,7 @@ function mkChart(id,type,labels,datasets,opts) {
     });
     const euOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(3)}}}};
     mkChart('cEurUsd','line',eurLbl,[
-      {label:'EUR/USD', data:euData, borderColor:CC.wt, borderWidth:1.6, pointRadius:0, fill:false, tension:.3},
+      {label:'EUR/USD', data:euData, borderColor:CC.wt, borderWidth:1.2, pointRadius:0, fill:false, tension:.3},
       ...maDatasets(euData),
     ], euOpts);
   }
