@@ -1887,7 +1887,9 @@ function mkChart(id,type,labels,datasets,opts) {
     for(let i=0;i<arr.length;i++){
       const v=arr[i]; q.push(v); if(v!=null){sum+=v;cnt++;}
       if(q.length>n){ const o=q.shift(); if(o!=null){sum-=o;cnt--;} }
-      out[i]=(q.length===n && cnt===n)?sum/n:null;
+      // 창은 n슬롯 채워야 하되, 매칭 누락(null)이 드물게 있는 USD크로스도
+      // 그릴 수 있도록 빠진 날은 빼고 있는 값들로 평균(sum/cnt). 원화고시는 cnt===n이라 동일.
+      out[i]=(q.length===n && cnt>=n*0.8)?sum/cnt:null;
     }
     return out;
   }
