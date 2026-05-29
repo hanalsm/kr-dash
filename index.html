@@ -1183,6 +1183,7 @@ const CC = {
   ac:'#3b82f6', gn:'#10b981', rd:'#ef4444', am:'#f59e0b',
   cy:'#06b6d4', pu:'#8b5cf6', pk:'#ec4899', og:'#fb923c',
   tl:'#2dd4bf', sl1:'#94a3b8', sl2:'#cbd5e1',
+  lm:'#84cc16', fu:'#d946ef',
 };
 const FONT = { family:"'JetBrains Mono',monospace", size:10 };
 Chart.defaults.datasets.line.spanGaps = true;  // null 구간 끊김 방지
@@ -1957,7 +1958,7 @@ function mkChart(id,type,labels,datasets,opts) {
     });
     const ucOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(2)}}}};
     mkChart('cUsdCnh','line',cnhLbl,[
-      {label:'USD/CNH', data:ucData, borderColor:CC.og, borderWidth:1.4, pointRadius:0, fill:false, tension:.3},
+      {label:'USD/CNH', data:ucData, borderColor:CC.lm, borderWidth:1.4, pointRadius:0, fill:false, tension:.3},
       ...maDatasets(ucData),
     ], ucOpts);
   }
@@ -1981,7 +1982,7 @@ function mkChart(id,type,labels,datasets,opts) {
     });
     const euOpts={...baseOpts(''),scales:{...baseOpts().scales,y:{...baseOpts().scales.y,ticks:{color:'#5c6b85',font:FONT,callback:v=>v.toFixed(3)}}}};
     mkChart('cEurUsd','line',eurLbl,[
-      {label:'EUR/USD', data:euData, borderColor:CC.tl, borderWidth:1.4, pointRadius:0, fill:false, tension:.3},
+      {label:'EUR/USD', data:euData, borderColor:CC.fu, borderWidth:1.4, pointRadius:0, fill:false, tension:.3},
       ...maDatasets(euData),
     ], euOpts);
   }
